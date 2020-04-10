@@ -1,4 +1,4 @@
-import json
+from flask import jsonify
 from app import app
 from nameparser import HumanName
 
@@ -7,6 +7,6 @@ from nameparser import HumanName
 def index(name):
   try:
     return_name = HumanName(name)
-    return json.dumps(return_name.as_dict())
+    return jsonify(return_name.as_dict())
   except Exception as e:
-    return json.dumps(str(e))
+    return jsonify(str(e))
